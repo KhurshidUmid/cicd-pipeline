@@ -11,7 +11,7 @@ pipeline {
                     branches: [[name: env.BRANCH_NAME]],
                     userRemoteConfigs: [[
                         url: 'git@github.com:KhurshidUmid/cicd-pipeline.git',
-                        credentialsId: 'github-ssh'
+                        credentialsId: 'git'
                     ]]
                 ])
             }	
