@@ -6,8 +6,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
-            }
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: env.BRANCH_NAME]],
+                    userRemoteConfigs: [[
+                        url: 'git@github.com:KhurshidUmid/cicd-pipeline.git',
+                        credentialsId: 'github-ssh'
+                    ]]
+                ])
+            }	
+
+#            steps {
+#                checkout scm
+#            }
         }
 
         stage('Build Docker Image') {
